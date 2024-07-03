@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
     <link rel="canonical" href="{{ canonical_url }}">
 
     {%- if settings.favicon != blank -%}
@@ -251,7 +258,10 @@
       }
     {% endstyle %}
 
+    {% comment %} !!!!!!!!!!!!!!!! customize Link URL !!!!!!!!!!!!{% endcomment %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'timer.css' | asset_url | stylesheet_tag }}
+    {{ 'my-flicky.min.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       {% comment %}theme-check-disable AssetPreload{% endcomment %}
@@ -283,6 +293,7 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    <script src="{{ 'timer.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
@@ -351,6 +362,9 @@
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
     </script>
+
+    {% comment %} !!!!!!!!!!!! customize Script URL !!!!!!!!!!!!{% endcomment %}
+    <script src="{{ 'my-flicky.min.js' | asset_url }}" defer="defer"></script>
 
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>

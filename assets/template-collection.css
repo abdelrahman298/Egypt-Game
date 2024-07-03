@@ -66,9 +66,20 @@
 .collection__description > * {
   margin: 0;
 }
-
+.countdown-customize{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;margin-bottom: 2.5rem;
+}
+.collection__title{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 35px;
+  margin: 0;
+}
 .collection__title.title-wrapper {
-  margin-bottom: 2.5rem;
+  /* margin-bottom: 2.5rem; */
 }
 
 .collection__title .title:not(:only-child) {

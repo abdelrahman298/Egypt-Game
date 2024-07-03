@@ -1,0 +1,105 @@
+{{ 'my-style.css' | asset_url | stylesheet_tag }}
+{{ 'my-flicky.min.css' | asset_url | stylesheet_tag }}
+
+<div class="section__body">
+  <!-- Container -->
+  <div class="container">
+    <div class="menu">
+      <ul>
+        <li><a href="#">Woman’s Fashion</a></li>
+        <li><a href="#">Men’s Fashion</a></li>
+        <li><a href="#">Electronics</a></li>
+        <li><a href="#">Home & Lifestyle </a></li>
+        <li><a href="#">Medicine</a></li>
+        <li><a href="#">Sports & Outdoor</a></li>
+        <li><a href="#">Baby’s & Toys</a></li>
+        <li><a href="#">Groceries & Pets </a></li>
+        <li><a href="#">Health & Beauty </a></li>
+      </ul>
+    </div>
+
+    <div class="header__slider">
+      <div class="main-carousel carousel-body">
+        {% for block in section.blocks %}
+          <div class="carousel-cell carousel-item">
+            {{
+              block.settings.image
+              | image_url: width: 800
+              | image_tag:
+                sizes: sizes,
+                widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000,
+                1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200'
+            }}
+          </div>
+          <div class="carousel-cell carousel-item">
+            {{
+              block.settings['image-2']
+              | image_url: width: 750
+              | image_tag:
+                sizes: sizes,
+                widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000,
+              1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200'
+            }}
+          </div>
+          <div class="carousel-cell carousel-item">
+            {{
+              block.settings['image-3']
+              | image_url: width: 800
+              | image_tag:
+                sizes: sizes,
+                widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000,
+              1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200'
+            }}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'my-flicky.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'my-script.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "my-flicky",
+
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "my-flicky",
+      "label": "add your flicky",
+      "info": "my-flicky-info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "my-flicky-image",
+
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.collage.blocks.image.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image-2",
+          "label": "t:sections.collage.blocks.image.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image-3",
+          "label": "t:sections.collage.blocks.image.settings.image.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "my-flicky-presets"
+    }
+  ]
+}
+{% endschema %}

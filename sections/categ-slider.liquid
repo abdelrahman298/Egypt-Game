@@ -1,0 +1,181 @@
+{{ 'categ-slider-flicky.min.css' | asset_url | stylesheet_tag }}
+
+<style>
+        .category-slider {
+          padding: 25px;
+        }
+        .category-slider__container {
+          padding: 0px 23rem;
+        }
+
+        @media (max-width: 772px) {
+          .category-slider__container {
+            padding: 0px 2rem;
+          }
+        }
+
+        .category-slider h2 {
+          font-size: 32px;
+          font-weight: 700;
+        }
+        .category-slider__container__title-slider-btns {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 36px;
+        }
+
+        .category-slider__container__title-slider-btns a {
+          color: rgba(var(--color-foreground), 0.75);
+          background: #ededed;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          width: 45px;
+          height: 44px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .category-slider__slider-btns {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .slider-btns__prev {
+          margin-right: 15px;
+        }
+         {% comment %}
+          .category-slider__body {
+           display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 25px;
+        }
+        {% endcomment %}
+        .category-slider__body__item {
+          border: 2px solid grey;
+          padding: 25px 0px;
+          text-align: center;
+          width: 150px;
+        }
+
+        .category-slider__body__item i {
+          font-size: 28px;
+        }
+        .category-slider__body__item p {
+          font-size: 18px;
+          color: #000;
+        }
+
+      {% comment %} ! Style the slider buttons {% endcomment %}
+
+       .carousel-cell-categ-slider.is-selected {
+        background:#DB4444;
+        color:#fff;
+      }
+      .flickity-page-dots {
+      display:none;}
+
+      .category-slider__body .flickity-prev-next-button,
+      .category-slider__body .flickity-prev-next-button
+      {background-color: #cdcdcd; }
+
+    .category-slider__body .flickity-prev-next-button.next {
+        right: 1px;
+        top: -58px;
+    }
+
+    .category-slider__body .flickity-prev-next-button.previous {
+      left: 89.7%;
+      background-color: #cdcdcd;
+      top: -58px;
+  }
+
+  @media (max-width:1200px){
+
+    .category-slider__body .flickity-prev-next-button.previous {
+      left: 80%;
+      background-color: #cdcdcd;
+      top: -58px;
+  }
+  }
+</style>
+
+<div class="category-slider">
+  <div class="category-slider__container">
+    <div class="category-slider__container__title-slider-btns">
+      <h2>Browse By Category</h2>
+    </div>
+
+    <div class="main-carousel-categ-slider category-slider__body ">
+      <button
+        class="flickity-button-categ-slider flickity-prev-next-button-categ-slider previous"
+        type="button"
+        disabled=""
+        aria-label="Previous"
+      >
+        <svg class="flickity-button-icon" viewBox="0 0 100 100">
+          <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow"></path>
+        </svg>
+      </button>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <p class="item__title">Phones</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-laptop"></i>
+          <p class="item__title">Computers</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-regular fa-clock"></i>
+          <p class="item__title">Smart Watches</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-camera"></i>
+          <p class="item__title">Camera</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-headset"></i>
+          <p class="item__title">Head Phones</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-gamepad"></i>
+          <p class="item__title">gaming</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-gamepad"></i>
+          <p class="item__title">gaming</p>
+        </div>
+      </div>
+      <div class="carousel-cell-categ-slider">
+        <div class="category-slider__body__item ">
+          <i class="fa-solid fa-gamepad"></i>
+          <p class="item__title">gaming</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{{ 'categ-slider-flicky.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'categ-slider.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "categ-slider",
+  "settings": [],
+  "presets": [{ "name": "categ-slider" }]
+}
+{% endschema %}

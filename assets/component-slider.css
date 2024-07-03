@@ -314,7 +314,7 @@ slider-component.slider-component-full-width {
 .slider-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: end;    margin-right: 50px;
 }
 
 @media screen and (min-width: 990px) {
@@ -337,10 +337,11 @@ slider-component.slider-component-full-width {
 
 .slider-button {
   color: rgba(var(--color-foreground), 0.75);
-  background: transparent;
+  background: #ededed;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
-  width: 44px;
+  width: 45px;
   height: 44px;
   display: flex;
   align-items: center;
@@ -349,6 +350,10 @@ slider-component.slider-component-full-width {
 
 .slider-button:not([disabled]):hover {
   color: rgb(var(--color-foreground));
+}
+
+.slider-button i{
+  font-size: 20px;
 }
 
 .slider-button .icon {
@@ -363,7 +368,9 @@ slider-component.slider-component-full-width {
 .slider-button--next .icon {
   transform: rotate(-90deg);
 }
-
+.slider-button--prev{
+  margin-right: 15px;
+}
 .slider-button--prev .icon {
   transform: rotate(90deg);
 }
@@ -375,3 +382,10 @@ slider-component.slider-component-full-width {
 .slider-button--prev:not([disabled]):hover .icon {
   transform: rotate(90deg) scale(1.1);
 }
+
+
+.view-all-btn{    background-color: #DB4444;
+  outline: none;}
+  .view-all-btn:after{
+    box-shadow: none !important;
+  }

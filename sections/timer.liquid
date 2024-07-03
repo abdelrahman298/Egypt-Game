@@ -1,0 +1,48 @@
+{% if section.settings.enable_countdown %}
+  <section class="timer_container">
+    <h1>Countdown Clock</h1>
+    <div id="clockdiv">
+      <div>
+        <span class="day"></span>
+        <div class="smalltext">Days</div>
+      </div>
+      <div>
+        <span class="hour"></span>
+        <div class="smalltext">Hours</div>
+      </div>
+      <div>
+        <span class="minute"></span>
+        <div class="smalltext">Minutes</div>
+      </div>
+      <div>
+        <span class="second"></span>
+        <div class="smalltext">Seconds</div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% schema %}
+{
+  "name": "Countdown_Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_countdown",
+      "default": false,
+      "label": "Enable Countdown"
+    },
+
+    {
+      "type": "text",
+      "id": "title",
+      "default": "SALE TEXT HERE",
+      "label": "Sale Title Text"
+    }
+  ]
+}
+{% endschema %}
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
