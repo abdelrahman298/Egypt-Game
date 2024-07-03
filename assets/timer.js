@@ -1,42 +1,75 @@
-function getTimeRemaining(endtime) {
-  const total = Date.parse(endtime) - Date.parse(new Date());
-  const second = Math.floor((total / 1000) % 60);
-  const minute = Math.floor((total / 1000 / 60) % 60);
-  const hour = Math.floor((total / (1000 * 60 * 60)) % 24);
-  const day = Math.floor(total / (1000 * 60 * 60 * 24));
+const $ = (elem) => document.querySelector(elem);
 
-  return {
-    total,
-    day,
-    hour,
-    minute,
-    second,
-  };
-}
+const countdown = function (_config) {
+  const tarDate = $(_config.target).getAttribute('data-date').split('-');
+  const day = parseInt(tarDate[0]);
+  const month = parseInt(tarDate[1]);
+  const year = parseInt(tarDate[2]);
+  let tarTime = $(_config.target).getAttribute('data-time');
+  let tarhour, tarmin;
 
-function initializeClock(id, endtime) {
-  const clock = document.getElementById(id);
-  const daysSpan = clock.querySelector('.day');
-  const hoursSpan = clock.querySelector('.hour');
-  const minutesSpan = clock.querySelector('.minute');
-  const secondsSpan = clock.querySelector('.second');
-
-  function updateClock() {
-    const t = getTimeRemaining(endtime);
-
-    daysSpan.innerHTML = t.day;
-    hoursSpan.innerHTML = ('0' + t.hour).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minute).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.second).slice(-2);
-
-    if (t.total <= 0) {
-      clearInterval(timeinterval);
-    }
+  if (tarTime != null) {
+    tarTime = tarTime.split(':');
+    tarhour = parseInt(tarTime[0]);
+    tarmin = parseInt(tarTime[1]);
   }
 
-  updateClock();
-  const timeinterval = setInterval(updateClock, 1000);
-}
+  let months = [31, new Date().getFullYear() % 4 == 0 ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  let dateNow = new Date();
+  let dayNow = dateNow.getDate();
+  let monthNow = dateNow.getMonth() + 1;
+  let yearNow = dateNow.getFullYear();
+  let hourNow = dateNow.getHours();
+  let minNow = dateNow.getMinutes();
+  let count_day = 0,
+    count_hour = 0,
+    count_min = 0;
+  let count_day_isSet = false;
+  let isOver = false;
 
-const deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-initializeClock('clockdiv', deadline);
+  // Set the date we're counting down to
+  const countDownDate = new Date(year, month - 1, day, tarhour, tarmin, 0, 0).getTime();
+
+  $(_config.target + ' .day .word').innerHTML = _config.dayWord;
+  $(_config.target + ' .hour .word').innerHTML = _config.hourWord;
+  $(_config.target + ' .min .word').innerHTML = _config.minWord;
+  $(_config.target + ' .sec .word').innerHTML = _config.secWord;
+
+  const updateTime = () => {
+    // Get todays date and time
+    const now = new Date().getTime();
+
+    // Find the distance between now an the count down date
+    const distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    requestAnimationFrame(updateTime);
+
+    $(_config.target + ' .day .num').innerHTML = addZero(days);
+    $(_config.target + ' .hour .num').innerHTML = addZero(hours);
+    $(_config.target + ' .min .num').innerHTML = addZero(minutes);
+    $(_config.target + ' .sec .num').innerHTML = addZero(seconds);
+
+    // If the count down is over, write some text
+    if (distance < 0) {
+      $('.countdown').innerHTML = 'EXPIRED';
+    }
+  };
+
+  updateTime();
+};
+
+const addZero = (x) => (x < 10 && x >= 0 ? '0' + x : x);
+
+const dateDown = new countdown({
+  target: '.countdown',
+  dayWord: ' days',
+  hourWord: ' hours',
+  minWord: ' mins',
+  secWord: ' secs',
+});

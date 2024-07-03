@@ -1,8 +1,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'timer.css' | asset_url | stylesheet_tag }}
 
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
@@ -74,7 +74,29 @@
               {{ section.settings.title }}
             </h2>
           {%- endif -%}
+
           <div class="countdown-timer-block" countdown-timer-id="cly2rfxri35767319zsjgiw32aj"></div>
+
+          <div class="wrapper">
+            <div class="countdown" id="countdown" data-date="25-10-2024" data-time="23:00">
+              <div class="day">
+                <span class="word"></span>
+                <span class="num"></span>
+              </div>
+              <div class="hour">
+                <span class="word"></span>
+                <span class="num"></span>
+              </div>
+              <div class="min">
+                <span class="word"></span>
+                <span class="num"></span>
+              </div>
+              <div class="sec">
+                <span class="word"></span>
+                <span class="num"></span>
+              </div>
+            </div>
+          </div>
         </div>
         {%- if show_mobile_slider or show_desktop_slider -%}
           <div class="slider-buttons">
@@ -197,6 +219,8 @@
     {%- endif -%}
   </div>
 </div>
+
+<script></script>
 
 {% schema %}
 {

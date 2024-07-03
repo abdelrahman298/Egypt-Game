@@ -1,26 +1,18 @@
-{% if section.settings.enable_countdown %}
-  <section class="timer_container">
-    <h1>Countdown Clock</h1>
-    <div id="clockdiv">
-      <div>
-        <span class="day"></span>
-        <div class="smalltext">Days</div>
-      </div>
-      <div>
-        <span class="hour"></span>
-        <div class="smalltext">Hours</div>
-      </div>
-      <div>
-        <span class="minute"></span>
-        <div class="smalltext">Minutes</div>
-      </div>
-      <div>
-        <span class="second"></span>
-        <div class="smalltext">Seconds</div>
-      </div>
-    </div>
-  </section>
-{% endif %}
+{{ 'timer.css' | asset_url | stylesheet_tag }}
+
+<div class="wrapper">
+  <h1>countdownJS</h1>
+
+  <div class="countdown" data-date="12-12-2024" data-time="23:00">
+    <div class="day"><span class="num"></span><span class="word"></span></div>
+    <div class="hour"><span class="num"></span><span class="word"></span></div>
+    <div class="min"><span class="num"></span><span class="word"></span></div>
+    <div class="sec"><span class="num"></span><span class="word"></span></div>
+  </div>
+</div>
+
+<script src="{{ 'timer.js' | asset_url }}" defer="defer"></script>
+
 {% schema %}
 {
   "name": "Countdown_Bar",
